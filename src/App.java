@@ -42,6 +42,6 @@ public class App {
     //             System.out.println("-------------------");
     //             System.out.println(estudiante.getNombre() + ", Promedio: " + estudiante.getPromedio());
     //         }
-        
+        System.out.println(estudiante1);
      }
 }
