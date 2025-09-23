@@ -1,8 +1,10 @@
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 public class App {
     public static void main(String[] args) throws Exception {
+        Scanner entrada = new Scanner(System.in);
         Estudiante estudiante1 = new Estudiante(
         "Juan", "Perez", 20, "Ingenieria", 8.5
         );

@@ -14,7 +14,7 @@ public Estudiante() {};
 public Estudiante(String nombre, String apellido, int edad, String carrera, double promedio) {
     this.nombre = nombre;
     this.apellido = apellido;
-    this.edad = edad;
+    setEdad(edad);
     this.carrera = carrera;
     this.promedio = promedio;
 }
@@ -56,7 +56,12 @@ public void setApellido(String apellido) {
     this.apellido = apellido;
 }
 public void setEdad(int edad) {
+    if (edad>120 || edad<16) {
+        System.out.println("Edad no valida");
+        return;         
+    } else {
     this.edad = edad;
+    }
 }
 
 public String setCarrera(String carrera) {
