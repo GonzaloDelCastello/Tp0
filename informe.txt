@@ -1,0 +1,30 @@
+Informe
+
+Encapsulamiento
+----------------
+En la solución, el encapsulamiento se aplicó utilizando modificadores de acceso "private"
+ para los atributos de las clases (Estudiante, Carrera, Materia, Universidad). 
+ El acceso y modificación de estos atributos se realiza exclusivamente a través de métodos públicos 
+ getters y setters, lo que protege el estado interno de los objetos y permite controlar cómo se accede y 
+ modifica la información.
+
+Relaciones entre Clases
+-----------------------
+Las relaciones entre clases se implementaron de la siguiente manera:
+- Composición/Agrupación:
+  - La clase Universidad contiene una lista de objetos Carrera, representando las carreras que ofrece.
+  - La clase Carrera contiene una lista de objetos Materia, 
+  representando las materias que forman parte de la carrera.
+  - La clase Materia contiene una lista de objetos Estudiante, 
+  representando los estudiantes inscriptos en la materia.
+- Asociación:
+  - Las clases se relacionan entre sí mediante atributos que almacenan referencias a otras clases 
+  (por ejemplo, Materia tiene un atributo Carrera).
+
+Validaciones en Métodos Setter
+------------------------------
+Se agregaron validaciones en los métodos setter para asegurar la integridad de los datos:
+- En la clase Estudiante, el método setEdad(int edad) valida que la edad esté en el rango permitido 
+(mayor a 16 y menor a 120). Si la edad no es válida, se muestra un mensaje y no se modifica el atributo.
+- Otros setters permiten modificar los atributos, pero el control de acceso mediante encapsulamiento 
+permite agregar validaciones adicionales si es necesario.

@@ -5,19 +5,22 @@ public class Estudiante {
 private String nombre;
 private String apellido;
 private int edad;
-private String carrera;
+private Carrera carrera;
 private double promedio;
 private ArrayList<Materia> materias;
 
 public Estudiante() {};
 
-public Estudiante(String nombre, String apellido, int edad, String carrera, double promedio) {
+public Estudiante(String nombre, String apellido, int edad, double promedio) {
     this.nombre = nombre;
     this.apellido = apellido;
     setEdad(edad);
-    this.carrera = carrera;
     this.promedio = promedio;
 }
+
+public String correr(){
+    return this.nombre + " está corriendo";
+};
 
 public void agregarMateria(Materia materia) {
     if (this.materias == null) {
@@ -29,13 +32,13 @@ public void agregarMateria(Materia materia) {
 public ArrayList<Materia> getMaterias() {
     return this.materias;
 }
-public double calcularPromedio() {
-    double suma = 0;
-    for (Materia materia : this.materias){
-        suma += materia.getCalificacion();
-    }
-    return suma / this.materias.size();
-}
+// public double calcularPromedio() {
+//     double suma = 0;
+//     for (Materia materia : this.materias){
+//         suma += materia.getCalificacion();
+//     }
+//     return suma / this.materias.size();
+// }
 
 public String getNombre() {
     return this.nombre;
@@ -64,9 +67,7 @@ public void setEdad(int edad) {
     }
 }
 
-public String setCarrera(String carrera) {
-    return this.carrera = carrera;
-}
+
 public double setPromedio(double promedio) {
     return this.promedio = promedio;
 }

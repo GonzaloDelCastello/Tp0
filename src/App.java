@@ -1,49 +1,58 @@
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
+
 
 public class App {
     public static void main(String[] args) throws Exception {
-        Scanner entrada = new Scanner(System.in);
-        Estudiante estudiante1 = new Estudiante(
-        "Juan", "Perez", 20, "Ingenieria", 8.5
-        );
-        Estudiante estudiante2 = new Estudiante(
-              "Maria", "Gomez", 22, "Medicina", 9.2
-        );
-        Estudiante estudiante3 = new Estudiante();
-            estudiante3.setNombre("Luis");
-            estudiante3.setApellido("Lopez");
-            estudiante3.setEdad(19);
-            estudiante3.setCarrera("Derecho");
-            estudiante3.setPromedio(8.5);
-            
-        List<Estudiante> estudiantes = new ArrayList<>();
-            estudiantes.add(estudiante1);
-            estudiantes.add(estudiante2);
-            estudiantes.add(estudiante3);
+    
+    //Crea un estudiantes
+    Estudiante estudiante1 = new Estudiante();
+    estudiante1.setNombre("Juan");
+    estudiante1.setApellido("Perez");
+    estudiante1.setEdad(20);
+    estudiante1.setPromedio(8.5);
+        //System.out.println(estudiante1.toString());
+    Estudiante estudiante2 = new Estudiante("Maria","Gomez",2,9.0);
+    Estudiante estudiante3 = new Estudiante("Luis","Lopez",19,8.0);
+    Estudiante estudiante4 = new Estudiante("Ana","Martinez",21,7.5);
         
-        Materia materia1 = new Materia("Matematicas", 101, 4, 9.0);
-        Materia materia2 = new Materia("Fisica", 102, 3, 8.5);
-        Materia materia3 = new Materia("Quimica", 103, 4, 7.5);
-        Materia materia4 = new Materia("Anatomia", 201, 5, 9.5);
-        estudiante1.agregarMateria(materia1);
-        estudiante1.agregarMateria(materia2);
-        estudiante2.agregarMateria(materia4);
-        estudiante2.agregarMateria(materia2);
-        estudiante3.agregarMateria(materia1);
-        estudiante3.agregarMateria(materia3);
-        estudiante3.agregarMateria(materia2);
-        for (Estudiante estudiante : estudiantes) {
-            System.out.println("-------------------");
-            System.out.println(estudiante.getNombre() + 
-            ", Promedio: " + estudiante.calcularPromedio());
-        }
+    //Crea una universidad
+    Universidad uNVIME = new Universidad("UNVIME","Av. Siempre Viva 123");
+    
+    //Crea una carrera
+    Carrera programacion = new Carrera("Programación",3);
+    Carrera ingSistemas = new Carrera("Ingenieria en Sistemas",5);
+    
+    //Crea materias
+    Materia programacion1 = new Materia("Programacion 1",101,4,programacion);
+    Materia matematica = new Materia("Matematica",102,3,programacion);
+    
+    //Agrega carreras a la universidad
+    uNVIME.agregarCarrera(programacion);
+    uNVIME.agregarCarrera(ingSistemas);
 
-    //         for (Estudiante estudiante : estudiantes) {
-    //             System.out.println("-------------------");
-    //             System.out.println(estudiante.getNombre() + ", Promedio: " + estudiante.getPromedio());
-    //         }
-        System.out.println(estudiante1);
-     }
+    //Agrega materias a la carrera
+    programacion.agregarMateria(programacion1);
+    programacion.agregarMateria(matematica);
+    ingSistemas.agregarMateria(matematica);
+    ingSistemas.agregarMateria(programacion1);
+
+    //Agrega estudiantes a las materias
+    programacion1.agregarEstudiante(estudiante1);
+    programacion1.agregarEstudiante(estudiante2);
+    matematica.agregarEstudiante(estudiante3);
+    matematica.agregarEstudiante(estudiante4);
+    programacion1.agregarEstudiante(estudiante3);
+    matematica.agregarEstudiante(estudiante1);
+
+    System.out.println(uNVIME.getNombre() + " tiene las siguientes carreras:");
+    for (Carrera carrera : uNVIME.getCarreras()) {
+        System.out.println("- " + carrera.getNombre() + " (" + carrera.getDuracion() + " años) con las siguientes materias:");
+        for (Materia materia : carrera.getMaterias()) {
+            System.out.println("  * " + materia.getNombre() + " (Código: " + materia.getCodigo() + ", Créditos: " + materia.getCreditos() + ") con los siguientes estudiantes:");
+            for (Estudiante estudiante : materia.getEstudiantes()) {
+                System.out.println("    - " + estudiante.getNombre() + " " + estudiante.getApellido() + " (Edad: " + estudiante.getEdad() + ", Promedio: " + estudiante.getPromedio() + ")");
+            }
+        }
+    }
+
+}
 }
